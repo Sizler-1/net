@@ -1,0 +1,35 @@
+{% extends 'border/base.html' %}
+
+{% block body %}
+
+<h1>Border Crossing Records</h1>
+<ul>
+  {% for crossing in crossings %}
+    <li>
+      {{ crossing.name }} - {{ crossing.date_of_birth }} - {{ crossing.passport_number }} - {{ crossing.nationality }} - {{ crossing.address }} - {{ crossing.phone_number }} - {{ crossing.email }}
+      (<a href="{% url 'view_vaccines' crossing_id=crossing.id %}">View Vaccines</a>)
+    </li>
+  {% empty %}
+    <li>No crossings yet.</li>
+  {% endfor %}
+</ul>
+
+<h1>Traveller Details</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Submit</button>
+</form>
+<hr>
+<h1>Border Crossing Records</h1>
+<ul>
+  {% for crossing in crossings %}
+    <li>
+      {{ crossing.name }} - {{ crossing.date_of_birth }} - {{ crossing.passport_number }} - {{ crossing.nationality }} - {{ crossing.address }} - {{ crossing.phone_number }} - {{ crossing.email }}
+      (<a href="{% url 'view_vaccines' crossing_id=crossing.id %}">View Vaccines</a>)
+    </li>
+  {% empty %}
+    <li>No crossings yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

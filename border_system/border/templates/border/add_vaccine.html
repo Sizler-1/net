@@ -1,0 +1,13 @@
+
+{% extends 'border/base.html' %}
+
+{% block body %}
+<h1>Add Vaccine for {{ border_crossing.name }}</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Submit</button>
+</form>
+
+<a href="{% url 'view_vaccines' crossing_id=border_crossing.id %}">Cancel</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+
+{% extends 'border/base.html' %}
+
+{% block body %}
+<h1>Traveller</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Submit</button>
+</form>
+{% endblock %}

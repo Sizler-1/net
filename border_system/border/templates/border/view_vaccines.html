@@ -1,0 +1,39 @@
+
+{% extends 'border/base.html' %}
+
+{% block body %}
+
+<h1>Border Crossing Records</h1>
+<ul>
+  {% for crossing in crossings %}
+    <li>
+      {{ crossing.name }} - {{ crossing.date_of_birth }} - {{ crossing.passport_number }} - {{ crossing.nationality }} - {{ crossing.address }} - {{ crossing.phone_number }} - {{ crossing.email }}
+      (<a href="{% url 'view_vaccines' crossing_id=crossing.id %}">View Vaccines</a>)
+    </li>
+  {% empty %}
+    <li>No crossings yet.</li>
+  {% endfor %}
+</ul>
+
+<h1>Vaccines for {{ border_crossing.name }}</h1>
+<p>Passport Number: {{ border_crossing.passport_number }}</p>
+<p>Date of Birth: {{ border_crossing.date_of_birth }}</p>
+<p>Nationality: {{ border_crossing.nationality }}</p>
+<p>Address: {{ border_crossing.address }}</p>
+<p>Phone Number: {{ border_crossing.phone_number }}</p>
+<p>Email: {{ border_crossing.email }}</p>
+
+<h2>Vaccines:</h2>
+{% if vaccines %}
+  <ul>
+    {% for vaccine in vaccines %}
+      <li>{{ vaccine.name }} - {{ vaccine.date_administered }}</li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No vaccines recorded for this border crossing.</p>
+{% endif %}
+
+
+
+{% endblock %}

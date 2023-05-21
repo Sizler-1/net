@@ -1,0 +1,29 @@
+{% extends 'border/base.html' %}
+
+{% block body %}
+
+  <h1>Welcome to the Border System</h1>
+  <p><a href="{% url 'add_border_crossing' %}">Traveller</a></p>
+  <br>
+  <p><a href="{% url 'login' %}">login </a></p>
+  <br>
+  <p><a href="{% url 'vaccination_records' %}">View vaccination records</a></p>
+  <br>
+  
+
+  
+
+
+<hr>
+<h1>Border Crossing Records</h1>
+<ul>
+  {% for crossing in crossings %}
+    <li>
+      {{ crossing.name }} - {{ crossing.date_of_birth }} - {{ crossing.passport_number }} - {{ crossing.nationality }} - {{ crossing.address }} - {{ crossing.phone_number }} - {{ crossing.email }}
+      (<a href="{% url 'view_vaccines' crossing_id=crossing.id %}">View Vaccines</a>)
+    </li>
+  {% empty %}
+    <li>No crossings yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,30 @@
+
+{% extends 'border/base.html' %}
+
+{% block body %}
+  <h1>Vaccination Records</h1>
+  <br>
+  <table style="float: right; padding-right: 800px;">
+    <thead>
+      <tr>
+        <th>Traveler</th>
+        <th>Vaccine</th>
+        <th>Date Administered</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for record in records %}
+        <tr>
+          <td>{{ record.traveler.name }}</td>
+          <td>{{ record.vaccine.name }}</td>
+          <td>{{ record.date_administered }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="3">No records found.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <br>
+{% endblock %}

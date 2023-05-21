@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>border crossing system</title>
+    <link rel="stylesheet" href="{% static 'border/style.css' %}">
+
+    <style>
+        body {
+			background-image: url('/static/border/flag22.jpg');
+			background-size: cover;
+			background-repeat: 800px;
+			background-attachment: fixed;
+		}
+    </style>
+
+</head>
+<body>
+
+    <div class="wrapper">
+        <!--Top menu -->
+        <div class="section">
+            <div class="top_navbar">
+                <div class="hamburger">
+                    <a href="#">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="sidebar">
+           <!--profile image & text-->
+           <div class="profile">
+            <h3>Vaccine Check</h3>
+            <p>System</p>
+        </div>
+            <!--menu item-->
+            <ul>
+                <li>
+                    <a href="" class="active">
+                        <span class="icon"><i class="fas fa-home"></i></span>
+                        <span class="item">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'add_border_crossing' %}">
+                        <span class="icon"><i class="fas fa-desktop"></i></span>
+                        <span class="item">Traveller details</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'vaccination_records' %}">
+                        <span class="icon"><i class="fas fa-user-friends"></i></span>
+                        <span class="item">Records</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'about' %}">
+                        <span class="icon"><i class="fas fa-tachometer-alt"></i></span>
+                        <span class="item">About</span>
+                    </a>
+                </li>
+               
+            </ul>
+        </div>
+        </div>
+
+    </div>
+    <br> <br>
+    <div id="block">
+        {% block body %} 
+        {% endblock %}
+    </div>
+
+
+
+   
+  <script>
+      var hamburger = document.querySelector(".hamburger");
+        hamburger.addEventListener("click", function(){
+            document.querySelector("body").classList.toggle("active");
+    })
+
+  </script>
+
+
+</body>
+</html>
